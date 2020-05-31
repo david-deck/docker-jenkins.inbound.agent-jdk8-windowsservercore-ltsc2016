@@ -1,7 +1,6 @@
 # escape=`
 
-ARG VERSION=4.3-4
-FROM jenkins/agent:${VERSION}-windowsservercore-1809
+FROM --platform=windows/amd64 edgehog/jenkins.agent:jdk8-windowsservercore-ltsc2016
 
 LABEL Description="This is a base image, which allows connecting Jenkins agents via JNLP protocols on Windows" Vendor="Jenkins Project" Version="$VERSION"
 
