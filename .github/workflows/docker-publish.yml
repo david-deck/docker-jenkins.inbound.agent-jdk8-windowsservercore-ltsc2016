@@ -1,0 +1,40 @@
+name: Publish Docker image
+
+on:
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+env:
+  # TODO: Change variable to your image's name.
+  IMAGE_NAME: image
+
+jobs:
+
+  # Push image to GitHub Packages.
+  # See also https://docs.docker.com/docker-hub/builds/
+  push:
+
+    runs-on: windows-2016
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build . --tag image
+
+      - name: Log into registry
+        run: echo "${{ secrets.DOCKER_HUB }}" | docker login -u edgehog --password-stdin
+
+      - name: Push image
+        run: |
+          docker tag image edgehog/jenkins.inbound.agent:jdk8-windowsservercore-ltsc2016
+          docker push edgehog/jenkins.inbound.agent:jdk8-windowsservercore-ltsc2016
