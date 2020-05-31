@@ -61,7 +61,7 @@ elseif ($env:JENKINS_AGENT_NAME) {
 }
 
 
-$params = @("-cp c:/ProgramData/Jenkins/agent.jar hudson.remoting.jnlp.Main -headless ")
+$params = @("-cp", "c:/ProgramData/Jenkins/agent.jar", "hudson.remoting.jnlp.Main", "-headless ")
 
 if ($Tunnel) {
     $params += @("-tunnel", $Tunnel)
