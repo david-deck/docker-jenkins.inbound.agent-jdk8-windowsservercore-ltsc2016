@@ -1,3 +1,9 @@
+```
+  .|||||||||.    
+ |||||||||||||   
+|||||||||||' .\  
+`||||||||||_,__o 
+```
 ***Docker image***
 - [docker-jenkins.agent-jdk8-windowsservercore-ltsc2016](../../../docker-jenkins.agent-jdk8-windowsservercore-ltsc2016)
 - Jenkins JNLP agent 4.3
