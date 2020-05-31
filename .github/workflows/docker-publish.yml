@@ -36,5 +36,5 @@ jobs:
 
       - name: Push image
         run: |
-          docker tag image edgehog/jenkins.inbound.agent:jdk8-windowsservercore-ltsc2016
-          docker push edgehog/jenkins.inbound.agent:jdk8-windowsservercore-ltsc2016
+          docker tag image edgehog/jenkins.jnlp.agent:jdk8-windowsservercore-ltsc2016
+          docker push edgehog/jenkins.jnlp.agent:jdk8-windowsservercore-ltsc2016
