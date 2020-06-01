@@ -14,5 +14,9 @@ RUN $output = net users ; `
     }
 
 COPY jenkins-agent.ps1 C:/ProgramData/Jenkins
+
 USER ${user}
-ENTRYPOINT ["powershell.exe", "-f", "C:/ProgramData/Jenkins/jenkins-agent.ps1"]
+
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+
+ENTRYPOINT C:/ProgramData/Jenkins/jenkins-agent.ps1

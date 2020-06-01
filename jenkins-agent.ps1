@@ -1,7 +1,6 @@
-# Based of script used by jenkinsci/jnlp-slave
-# https://github.com/jenkinsci/docker-jnlp-slave/blob/master/jenkins-slave
+# See https://github.com/JonCubed/docker-jenkins-jnlp-slave-windows/blob/master/slave-launch.ps1
 #
-# Usage : slave-launch.ps1 -Url <url> [-Tunnel <tunnel>] [<secret>] [<agent Name>]
+# Usage : jenkins-agent.ps1 -Url <url> [-Tunnel <tunnel>] [<secret>] [<agent Name>]
 #
 # Optional environment variables:
 # * JENKINS_TUNNEL      : HOST:PORT for a tunnel to route TCP traffic to a Jenkins host when Jenkins can't be directly accessed over network
@@ -61,7 +60,8 @@ elseif ($env:JENKINS_AGENT_NAME) {
 }
 
 
-$params = @("-cp", "c:/ProgramData/Jenkins/agent.jar", "hudson.remoting.jnlp.Main", "-headless ")
+#$params = @("-cp", "c:/ProgramData/Jenkins/agent.jar", "hudson.remoting.jnlp.Main", "-headless")
+$params = @("-headless")
 
 if ($Tunnel) {
     $params += @("-tunnel", $Tunnel)
@@ -79,6 +79,8 @@ function Show-Commandline {
 }
 
 Show-Commandline "java" @params
+#Show-Commandline "java $javaOpts $jnlpProtocolOpts -cp ./slave.jar hudson.remoting.jnlp.Main" @params
 
 # run agent
-. java @params
+. java $javaOpts $jnlpProtocolOpts -cp ./slave.jar hudson.remoting.jnlp.Main @params
+#. java @params
