@@ -82,5 +82,5 @@ Show-Commandline "java" @params
 #Show-Commandline "java $javaOpts $jnlpProtocolOpts -cp ./slave.jar hudson.remoting.jnlp.Main" @params
 
 # run agent
-. java $javaOpts $jnlpProtocolOpts -cp ./slave.jar hudson.remoting.jnlp.Main @params
+. java $javaOpts $jnlpProtocolOpts -cp c:/ProgramData/Jenkins/agent.jar hudson.remoting.jnlp.Main @params
 #. java @params
